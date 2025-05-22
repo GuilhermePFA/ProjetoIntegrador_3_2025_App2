@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Risk">
+
+
+    <!-- Conteúdo Principal -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/riskTextViewEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="600dp"
+            android:text="@string/riskText"
+            android:textColor="@color/green"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/riskTypeEditText"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/edit_text_shape"
+            android:hint="@string/riskType"
+            android:inputType="text"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/riskTextViewEdit" />
+
+
+        <TextView
+            android:id="@+id/riskLocEditText"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edit_text_shape"
+            android:hint="@string/riskLoc"
+            android:inputType="text"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/riskTypeEditText" />
+
+        <EditText
+            android:id="@+id/riskDescEditText"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edit_text_shape"
+            android:hint="@string/riskDesc"
+            android:inputType="text"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/riskLocEditText" />
+
+        <ImageView
+            android:id="@+id/riskAnexEditIcon"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edit_text_shape"
+            android:contentDescription="@string/riskAnex"
+            android:padding="16dp"
+            android:src="@drawable/ic_camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/riskDescEditText" />
+
+        <Button
+            android:id="@+id/riskSent"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="75dp"
+            android:backgroundTint="@color/green"
+            android:text="@string/riskSent"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_next_buttons_20"
+            app:iconGravity="textEnd"
+            app:iconPadding="0dp"
+            app:iconSize="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/riskAnexEditIcon" />
+
+        <ImageButton
+            android:id="@+id/menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_more"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/green" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Menu Lateral -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/menu_navigation" />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
