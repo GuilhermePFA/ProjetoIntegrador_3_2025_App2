@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- para a câmera que salva em cacheDir -->
+    <cache-path
+        name="cache_images"
+        path="." />
+
+    <!-- continua servindo seu filesDir -->
+    <files-path
+        name="images"
+        path="." />
+</paths>

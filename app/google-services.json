@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "573456201629",
+    "firebase_url": "https://projetointegrador-3567c-default-rtdb.firebaseio.com",
+    "project_id": "projetointegrador-3567c",
+    "storage_bucket": "projetointegrador-3567c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573456201629:android:e5b1eba51f9e142379a174",
+        "android_client_info": {
+          "package_name": "com.example.pi_03_equipe_01"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3cWAqzE7T4tL8AI3SqtWmxY6683593eE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
