@@ -1,8 +1,10 @@
 package com.example.pi_03_equipe_01
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import com.example.pi_03_equipe_01.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -23,6 +25,19 @@ class Maps : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Menu lateral
+        binding.menuButton.setOnClickListener {
+            binding.mapsDrawer.openDrawer(GravityCompat.START)
+        }
+
+        binding.navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_history -> startActivity(Intent(this, History::class.java)).also { finish() }
+                R.id.nav_sair -> finishAffinity()
+            }
+            binding.mapsDrawer.closeDrawer(GravityCompat.START)
+            true
+        }
 
         // Inicializa o mapa
         val mapFragment = supportFragmentManager

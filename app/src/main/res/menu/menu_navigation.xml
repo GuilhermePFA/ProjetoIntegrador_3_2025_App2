@@ -4,6 +4,10 @@
         android:id="@+id/nav_history"
         android:title="Histórico"
         android:icon="@drawable/ic_history"/>
+    <item
+        android:id="@+id/nav_maps"
+        android:title="Mapa"
+        android:icon="@drawable/ic_history"/>
 
     <item
         android:id="@+id/nav_sair"

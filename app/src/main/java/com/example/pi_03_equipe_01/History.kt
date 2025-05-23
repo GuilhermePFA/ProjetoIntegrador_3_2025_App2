@@ -45,6 +45,11 @@ class History : AppCompatActivity() {
                     startActivity(Intent(this, History::class.java))
                     finish()
                 }
+
+                R.id.nav_maps -> {
+                    startActivity(Intent(this, Maps::class.java))
+                    finish()
+                }
                 R.id.nav_sair    -> finishAffinity()
             }
             drawerLayout.closeDrawer(GravityCompat.START)

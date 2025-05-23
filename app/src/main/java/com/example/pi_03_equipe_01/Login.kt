@@ -7,10 +7,15 @@ import android.text.InputType
 import android.util.Log
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.pi_03_equipe_01.databinding.ActivityLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class Login : AppCompatActivity() {
 
@@ -37,7 +42,6 @@ class Login : AppCompatActivity() {
         }
 
 
-
         @Suppress("ClickableViewAccessibility")
         binding.loginPasswordEditText.setOnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_UP) {
@@ -62,11 +66,19 @@ class Login : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val userId = auth.currentUser?.uid
-                    Log.d("LOGIN", "Usuário logado com sucesso: $userId")
-                    intent.putExtra("USER_ID", userId)
-                    startActivity(intent)
-                    finish()
+                    val userId = auth.currentUser?.uid ?: return@addOnCompleteListener
+                    authUserByRole(userId, "admin") { autenticado ->
+                        if (autenticado) {
+                            Log.d("LOGIN", "Usuário logado com sucesso: $userId")
+                            val intent = Intent(this, History::class.java)
+                            intent.putExtra("USER_ID", userId)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Log.d("LOGIN", "Usuário não autorizado com role 'admin': $userId")
+                            showSnackbar("Você não tem permissão para acessar", Color.RED)
+                        }
+                    }
                 } else {
                     val exception = task.exception
                     val message = when (exception) {
@@ -88,6 +100,26 @@ class Login : AppCompatActivity() {
                 }
             }
     }
+
+
+
+    private fun authUserByRole(userID: String, roleMock: String, callback: (Boolean) -> Unit) {
+        val ref = FirebaseDatabase.getInstance().getReference("user").child(userID)
+
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val role = snapshot.child("role").getValue(String::class.java) ?: ""
+                val autenticado = role == roleMock
+                callback(autenticado)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("CONSULTA", "Erro na consulta: ${error.message}")
+                callback(false)
+            }
+        })
+    }
+
 
     private fun togglePasswordVisibility(visible: Boolean) {
         val inputType = if (visible) {
