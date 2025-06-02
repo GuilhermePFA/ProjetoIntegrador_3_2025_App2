@@ -38,7 +38,7 @@
             android:name=".Maps"
             android:exported="false" />
         <activity
-            android:name=".History"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -47,7 +47,7 @@
             android:name=".Information"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".History"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
