@@ -80,7 +80,6 @@ class Information : AppCompatActivity() {
                         binding.riskTextView.text = nameView
                         binding.txtDataValor.text = date
                         binding.txtStatusValor.text = status
-                        //binding.statusDotInformations.integer = statusIcon
                         binding.txtLocalizacao.text = localizacao
                         binding.statusDotInformations.setImageDrawable(statusimg)
                         binding.descriptionTextView.text = descriptionView

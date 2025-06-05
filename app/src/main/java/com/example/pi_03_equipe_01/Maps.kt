@@ -25,7 +25,6 @@ class Maps : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // Menu lateral
         binding.menuButton.setOnClickListener {
             binding.mapsDrawer.openDrawer(GravityCompat.START)
         }
@@ -39,12 +38,10 @@ class Maps : AppCompatActivity(), OnMapReadyCallback {
             true
         }
 
-        // Inicializa o mapa
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        // Referência do Firebase
         database = FirebaseDatabase.getInstance().getReference("risk")
     }
 
@@ -66,7 +63,6 @@ class Maps : AppCompatActivity(), OnMapReadyCallback {
                         mMap.addMarker(MarkerOptions().position(position).title(title))
                     }
 
-                    // Foca no primeiro ponto (opcional)
                     val first = snapshot.children.firstOrNull()
                     val lat = first?.child("latitude")?.getValue(Double::class.java)
                     val long = first?.child("longitude")?.getValue(Double::class.java)

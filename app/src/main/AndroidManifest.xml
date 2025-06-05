@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <!-- Permissões necessárias -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- Declaração de uso da câmera (não obrigatória, mas recomendada) -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -21,10 +20,9 @@
         android:theme="@style/Theme.PI_03_Equipe_01"
         tools:targetApi="31">
 
-        <!-- Chave da API do Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBw4yrbAbRxGfkBW4Psl4HLjwn4FFvUjsY" /> <!-- FileProvider (para uso futuro com imagens/arquivos) -->
+            android:value="AIzaSyBw4yrbAbRxGfkBW4Psl4HLjwn4FFvUjsY" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -33,12 +31,12 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider> <!-- Suas activities -->
+        </provider>
         <activity
             android:name=".Maps"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".History"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -47,7 +45,7 @@
             android:name=".Information"
             android:exported="false" />
         <activity
-            android:name=".History"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,7 +7,6 @@ import android.text.InputType
 import android.util.Log
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.example.pi_03_equipe_01.databinding.ActivityLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
@@ -84,12 +83,14 @@ class Login : AppCompatActivity() {
                     val message = when (exception) {
                         is FirebaseAuthInvalidUserException ->
                             "Conta não encontrada. Verifique o e-mail."
+
                         is FirebaseAuthInvalidCredentialsException ->
                             "E-mail ou senha incorretos."
+
                         is FirebaseNetworkException ->
                             "Sem conexão com a internet."
+
                         else ->
-                            // Caso queira tratar TOO_MANY_ATTEMPTS:
                             if (exception?.message?.contains("TOO_MANY_ATTEMPTS_TRY_LATER") == true)
                                 "Muitas tentativas. Tente novamente mais tarde."
                             else
@@ -100,7 +101,6 @@ class Login : AppCompatActivity() {
                 }
             }
     }
-
 
 
     private fun authUserByRole(userID: String, roleMock: String, callback: (Boolean) -> Unit) {
