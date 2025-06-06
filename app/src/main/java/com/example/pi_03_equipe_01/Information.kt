@@ -3,11 +3,8 @@ package com.example.pi_03_equipe_01
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.pi_03_equipe_01.databinding.ActivityInformationsBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
